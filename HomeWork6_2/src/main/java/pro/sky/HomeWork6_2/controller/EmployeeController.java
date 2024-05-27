@@ -22,25 +22,30 @@ public class EmployeeController {
 
     @GetMapping("/add")
     public Employee add(@RequestParam String firstName,
-                        @RequestParam String lastName) {
-        return employeeService.addEmployee(firstName, lastName);
+                        @RequestParam String lastName,
+                        @RequestParam int department,
+                        @RequestParam double salary) {
+        return employeeService.addEmployee(firstName, lastName, department, salary);
     }
 
     @GetMapping("/remove")
     public Employee delete(@RequestParam String firstName,
-                           @RequestParam String lastName) {
-        return employeeService.deleteEmployee(firstName, lastName);
+                           @RequestParam String lastName,
+                           @RequestParam int department,
+                           @RequestParam double salary) {
+        return employeeService.deleteEmployee(firstName, lastName, department, salary);
     }
 
     @GetMapping("/find")
     public Employee find(@RequestParam String firstName,
-                         @RequestParam String lastName) {
-        return employeeService.findEmployee(firstName, lastName);
+                         @RequestParam String lastName,
+                         @RequestParam int department,
+                         @RequestParam double salary) {
+        return employeeService.findEmployee(firstName, lastName, department, salary);
     }
 
     @GetMapping
     public List<Employee> findALL() {
-        return employeeService.findALL();
+        return employeeService.findAll();
     }
-    //https://github.com/Dmitryi97/HomeWork9_2.git
 }
