@@ -1,7 +1,6 @@
 package pro.sky.HomeWork6_2.service;
 
 import jakarta.annotation.PostConstruct;
-import org.springframework.stereotype.Service;
 import pro.sky.HomeWork6_2.exeption.EmployeeAlreadyAddedException;
 import pro.sky.HomeWork6_2.exeption.EmployeeNotFoundExeption;
 import pro.sky.HomeWork6_2.exeption.EmployeeStorageIsFullException;
@@ -10,11 +9,9 @@ import pro.sky.HomeWork6_2.model.Employee;
 
 import java.util.*;
 
-@Service
 public class EmployeeServiceimpl implements EmployeeService {
     private final int maxEmployee = 15;
     private final Map<String, Employee> employees = new HashMap<>();
-
     @PostConstruct
     private void init(){
         addEmployee("Ivan","Ivanov",1,10_000);
@@ -24,6 +21,7 @@ public class EmployeeServiceimpl implements EmployeeService {
         addEmployee("Andrey","Ivanov",1,20_200);
         addEmployee("Ivan","Hicolaev",1,15_000);
     }
+
     @Override
     public Employee addEmployee(String firstName, String lastName, int department, double salary) {
         String key = buildKey(firstName, lastName);
@@ -59,6 +57,7 @@ public class EmployeeServiceimpl implements EmployeeService {
     private String buildKey(String firstName, String lastName) {
         return firstName + lastName;
     }
+
     @Override
     public List<Employee> findAll() {
         return List.copyOf(employees.values());
